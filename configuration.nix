@@ -11,11 +11,14 @@
     ];
 
   # Bootloader.
-  boot.loader.grub.enable = true;
-  boot.loader.grub.device = "/dev/sda";
-  boot.loader.grub.useOSProber = true;
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
-  networking.hostName = "nixos"; # Define your hostname.
+  #Boots the latest kernel.
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  networking.hostName = "nixpadl14"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -47,9 +50,6 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Enable Flatpak
-  services.flatpak.enable = true;
- 
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -71,11 +71,15 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.joshuaw = {
+  users.users.jwagner = {
     isNormalUser = true;
     description = "Joshua Wagner";
     extraGroups = [ "networkmanager" "wheel" ];
-      };
+    packages = with pkgs; [
+    
+    
+    ];
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -83,9 +87,18 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-  wget
-  
+    vim 
+    wget
+    git
+    vscode
+
+    #Gnome Exentions
+    gnome.gnome-tweaks
+    gnomeExtensions.tailscale-status
+    
+    google-chrome-dev
+    flatpak
+    tailscale
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -97,6 +110,12 @@
   # };
 
   # List services that you want to enable:
+    
+    #Enable Flatpak service
+    services.flatpak.enable = true;
+  
+    #Enable the Tailscale service
+    services.tailscale.enable = true;
 
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
@@ -105,8 +124,9 @@
   # networking.firewall.allowedTCPPorts = [ ... ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
-  networking.firewall.enable = true;
+   networking.firewall.enable = true;
 
+  
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
   # on your system were taken. It‘s perfectly fine and recommended to leave
