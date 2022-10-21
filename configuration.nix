@@ -49,6 +49,9 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
+  # Add Canon Drivers
+  services.printing.drivers = [ pkgs.canon-cups-ufr2 ];
+
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -91,14 +94,20 @@
     wget
     git
     vscode
+    neovim
 
     #Gnome Exentions
     gnome.gnome-tweaks
     gnomeExtensions.tailscale-status
+
+    #Gnome Theme
+    nordic
     
     google-chrome-dev
     flatpak
     tailscale
+    
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -108,6 +117,15 @@
   #   enable = true;
   #   enableSSHSupport = true;
   # };
+
+  # Enable Virtualbox and extensions:
+  
+   #virtualisation.virtualbox.host.enable = true;
+   #users.extraGroups.vboxusers.members = [ "jwagner" ];
+   #virtualisation.virtualbox.guest.enable = true;
+   #virtualisation.virtualbox.guest.x11 = true;
+   #virtualisation.virtualbox.host.enableExtensionPack = true;
+  
 
   # List services that you want to enable:
     
