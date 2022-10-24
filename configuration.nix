@@ -120,11 +120,11 @@
 
   # Enable Virtualbox and extensions:
   
-   #virtualisation.virtualbox.host.enable = true;
-   #users.extraGroups.vboxusers.members = [ "jwagner" ];
-   #virtualisation.virtualbox.guest.enable = true;
-   #virtualisation.virtualbox.guest.x11 = true;
-   #virtualisation.virtualbox.host.enableExtensionPack = true;
+   virtualisation.virtualbox.host.enable = true;
+   users.extraGroups.vboxusers.members = [ "jwagner" ];
+   virtualisation.virtualbox.guest.enable = true;
+   virtualisation.virtualbox.guest.x11 = true;
+   virtualisation.virtualbox.host.enableExtensionPack = true;
   
 
   # List services that you want to enable:
