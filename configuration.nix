@@ -34,6 +34,13 @@ in {
   #Enable bluetooth
   hardware.bluetooth.enable= true;
 
+  #Enable printing
+  services.printing.enable = true;
+  services.avahi.enable = true;
+  services.avahi.nssmdns = true;
+  #For a WiFi printer
+  services.avahi.openFirewall = true;
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -110,7 +117,10 @@ in {
     unstable.vscode
     flatpak
     discover
-    unstable. vivaldi
+    unstable.vivaldi
+    unstable.protonmail-bridge
+    unstable.sublime4
+
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
