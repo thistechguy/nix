@@ -30,7 +30,7 @@ in {
 
   # Enable networking
   networking.networkmanager.enable = true;
-
+  
   #Enable bluetooth
   hardware.bluetooth.enable= true;
 
@@ -72,6 +72,7 @@ in {
     xkbVariant = "";
   };
 
+  
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -111,12 +112,15 @@ in {
     vim 
     wget
     git
-    unstable.vscode
+    unstable.vscodium
     flatpak
     discover
     unstable.vivaldi
     unstable.protonmail-bridge
     unstable.sublime4
+    unstable.syncthing
+    unstable.syncthingtray
+    tailscale
 
   ];
 
@@ -129,12 +133,15 @@ in {
   # };
 
   # List services that you want to enable:
+
+  #Enable Tailscale service
+   services.tailscale.enable = true;
    
   #Enable Flatpak service
    services.flatpak.enable = true;
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+   services.openssh.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
